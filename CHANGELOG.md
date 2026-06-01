@@ -2,6 +2,10 @@
 
 ## [1.1.1] - 2026-06-01
 
+### Added
+- Bioconda package available: `conda install -c bioconda prinseq-rust` ([PR](https://github.com/bioconda/bioconda-recipes/pulls))
+- README updated with Bioconda installation instructions
+
 ### Fixed
 - `--VERBOSE 2` output now prints exactly 17 lines matching C++ PRINSEQ++ — `trim_to_len` was incorrectly included in the verbose stat list (it is a Rust-only addition and has no C++ counterpart)
 

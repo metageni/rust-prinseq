@@ -19,6 +19,12 @@ Multi-threading scales similarly in both tools (~1.7–2× gain from 1→4 threa
 
 ## Installation
 
+### Option 0 — Bioconda (recommended)
+
+```bash
+conda install -c bioconda prinseq-rust
+```
+
 ### Prerequisites
 
 You need the Rust toolchain (version 1.70 or later). If you don't have it:

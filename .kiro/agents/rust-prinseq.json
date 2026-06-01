@@ -1,0 +1,30 @@
+{
+  "name": "rust-prinseq",
+  "description": "Rust development agent for the rust-prinseq project",
+  "prompt": "You are an expert Rust developer working on rust-prinseq, a high-performance FASTQ/FASTA quality control tool. Focus on safety, performance, and idiomatic Rust.",
+  "tools": ["read", "write", "shell", "grep", "glob", "code"],
+  "allowedTools": ["read", "grep", "glob", "code"],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": ["src/**", "tests/**", ".kiro/**"],
+      "deniedPaths": ["target/**"]
+    },
+    "shell": {
+      "allowedCommands": ["cargo check", "cargo test", "cargo build", "cargo clippy", "cargo fmt", "git"],
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://src/**/*.rs",
+    "file://tests/**/*.rs",
+    "file://Cargo.toml",
+    "file://README.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "cargo --version && rustc --version" }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+r",
+  "welcomeMessage": "Ready to work on rust-prinseq!"
+}

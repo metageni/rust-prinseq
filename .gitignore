@@ -1,12 +1,15 @@
 /target
 Cargo.lock
 
-# test output files
+# test output files (but keep test fixtures)
 *.fastq
 *.fasta
 *.fastq.gz
 *.fasta.gz
-!tests/
+!tests/data/*.fastq
+!tests/data/*.fasta
+!tests/data/*.fastq.gz
+!tests/data/*.fasta.gz
 
 # editor
 *.swp

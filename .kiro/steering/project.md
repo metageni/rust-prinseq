@@ -1,4 +1,4 @@
-# rust-prinseq Project Rules
+# prinseq-rust Project Rules
 
 ## Project
 Rust reimplementation of PRINSEQ++ — a high-performance FASTQ/FASTA sequence quality control tool.

@@ -1,15 +1,15 @@
-/// Integration tests for rust-prinseq.
+/// Integration tests for prinseq-rust.
 ///
 /// Expected outputs are verified against the C++ PRINSEQ++ binary (v1.2).
-/// Where rust-prinseq intentionally fixes a C++ bug, the comment notes the difference.
+/// Where prinseq-rust intentionally fixes a C++ bug, the comment notes the difference.
 use std::fs;
 use std::io::Read;
 use std::path::PathBuf;
 use std::process::Command;
 
 fn bin() -> PathBuf {
-    let r = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("target/release/rust-prinseq");
-    let d = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("target/debug/rust-prinseq");
+    let r = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("target/release/prinseq-rust");
+    let d = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("target/debug/prinseq-rust");
     if r.exists() { r } else { d }
 }
 
@@ -166,7 +166,7 @@ fn test_trim_tail_right() {
 fn test_trim_qual_right() {
     // seq7_F has 9999... tail (phred 24 < 30) → trimmed to 55 bases
     // seq8_F all-C qual (phred 34 > 30) → untouched (163 bases)
-    // Note: C++ has a seq/qual desync bug here; rust-prinseq trims correctly.
+    // Note: C++ has a seq/qual desync bug here; prinseq-rust trims correctly.
     let (good, _) = run_se(&["--trim_qual_right", "30"]);
     assert_eq!(seq_of(&good, "seq7_F").len(), 55);
     assert_eq!(seq_of(&good, "seq8_F").len(), 163);
@@ -525,7 +525,7 @@ fn test_help_flag() {
 fn test_version_flag() {
     let out = Command::new(bin()).arg("--version").output().unwrap();
     let stdout = String::from_utf8_lossy(&out.stdout);
-    assert!(stdout.contains("rust-prinseq"));
+    assert!(stdout.contains("prinseq-rust"));
     assert!(stdout.contains("1.0.0"));
 }
 
@@ -539,5 +539,5 @@ fn test_short_help_flag() {
 fn test_short_version_flag() {
     let out = Command::new(bin()).arg("-v").output().unwrap();
     let stdout = String::from_utf8_lossy(&out.stdout);
-    assert!(stdout.contains("rust-prinseq"));
+    assert!(stdout.contains("prinseq-rust"));
 }

@@ -23,7 +23,7 @@
 ## [1.0.0] - 2026-05-31
 
 ### Added
-- Full Rust port of PRINSEQ++ released as `rust-prinseq` with feature parity to C++ v1.2
+- Full Rust port of PRINSEQ++ released as `prinseq-rust` with feature parity to C++ v1.2
 - All filters: `min_len`, `max_len`, `min_gc`, `max_gc`, `min_qual_score`, `min_qual_mean`, `ns_max_n`, `noiupac`, `derep`, `lc_entropy`, `lc_dust`
 - All trimmers: `trim_left`, `trim_right`, `trim_tail_left`, `trim_tail_right`, `trim_qual_left`, `trim_qual_right`
 - Single-end and paired-end (good/single/bad) read routing

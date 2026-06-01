@@ -1,4 +1,4 @@
-# rust-prinseq
+# prinseq-rust
 
 A Rust port of [PRINSEQ++](https://github.com/Adrian-Cantu/PRINSEQ-plus-plus) — a fast FASTQ/FASTA quality control, filtering, and trimming tool for genomic and metagenomic sequence data.
 
@@ -14,7 +14,7 @@ Benchmarked against the original C++ on 150 bp reads with a realistic filter set
 | 1M reads (301 MB) | 7.91s | 4.64s | 1.7× | 2.84s | 1.62s | 1.8× |
 | 10M reads (3 GB) | 78.79s | 46.78s | 1.7× | 29.05s | 16.58s | 1.8× |
 
-**rust-prinseq is consistently ~1.7–1.8× faster** than C++ PRINSEQ++ at all scales, both single and multi-threaded.
+**prinseq-rust is consistently ~1.7–1.8× faster** than C++ PRINSEQ++ at all scales, both single and multi-threaded.
 Multi-threading scales similarly in both tools (~1.7–2× gain from 1→4 threads).
 
 ## Installation
@@ -38,34 +38,34 @@ cargo --version
 ### Option 1 — Install from source (recommended)
 
 ```bash
-git clone https://github.com/metageni/rust-prinseq.git
-cd rust-prinseq
+git clone https://github.com/metageni/prinseq-rust.git
+cd prinseq-rust
 cargo install --path .
 ```
 
-This compiles a release binary and places it in `~/.cargo/bin/`, which is already on your `PATH` after the Rust install. You can then call `rust-prinseq` from anywhere.
+This compiles a release binary and places it in `~/.cargo/bin/`, which is already on your `PATH` after the Rust install. You can then call `prinseq-rust` from anywhere.
 
 ### Option 2 — Build manually
 
 ```bash
-git clone https://github.com/metageni/rust-prinseq.git
-cd rust-prinseq
+git clone https://github.com/metageni/prinseq-rust.git
+cd prinseq-rust
 cargo build --release
 ```
 
-The binary is at `target/release/rust-prinseq`. Copy it wherever you like:
+The binary is at `target/release/prinseq-rust`. Copy it wherever you like:
 
 ```bash
-cp target/release/rust-prinseq /usr/local/bin/   # system-wide
+cp target/release/prinseq-rust /usr/local/bin/   # system-wide
 # or
-cp target/release/rust-prinseq ~/bin/             # user-local
+cp target/release/prinseq-rust ~/bin/             # user-local
 ```
 
 ### Verify the installation
 
 ```bash
-rust-prinseq --version
-rust-prinseq --help
+prinseq-rust --version
+prinseq-rust --help
 ```
 
 ### Uninstall
@@ -73,13 +73,13 @@ rust-prinseq --help
 If installed via `cargo install`:
 
 ```bash
-cargo uninstall rust-prinseq
+cargo uninstall prinseq-rust
 ```
 
 ## Usage
 
 ```
-rust-prinseq --fastq <file> [OPTIONS]
+prinseq-rust --fastq <file> [OPTIONS]
 ```
 
 ### Input
@@ -147,18 +147,18 @@ For paired-end, output files are `_good_out_R1`, `_good_out_R2`, `_single_out_R1
 
 ```bash
 # Basic quality filter
-rust-prinseq --fastq reads.fastq --min_len 50 --min_qual_mean 20 --out_name clean
+prinseq-rust --fastq reads.fastq --min_len 50 --min_qual_mean 20 --out_name clean
 
 # Paired-end with trimming
-rust-prinseq --fastq R1.fastq.gz --fastq2 R2.fastq.gz \
+prinseq-rust --fastq R1.fastq.gz --fastq2 R2.fastq.gz \
   --min_len 50 --trim_qual_right=20 --trim_tail_right=5 \
   --threads 4 --out_name clean
 
 # Low-complexity filter + deduplication
-rust-prinseq --fastq reads.fastq --lc_entropy --derep --out_name clean
+prinseq-rust --fastq reads.fastq --lc_entropy --derep --out_name clean
 
 # FASTA input, FASTA output
-rust-prinseq --fastq reads.fasta --FASTA --out_format 1 --min_len 100 --out_name clean
+prinseq-rust --fastq reads.fasta --FASTA --out_format 1 --min_len 100 --out_name clean
 ```
 
 ## Differences from C++ PRINSEQ++

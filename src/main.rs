@@ -14,7 +14,7 @@ use std::{
 // ── CLI ───────────────────────────────────────────────────────────────────────
 
 #[derive(Parser, Debug)]
-#[command(name = "rust-prinseq", version, about = "PRINSEQ++ – fast FASTQ/FASTA QC filter (Rust port)")]
+#[command(name = "prinseq-rust", version, about = "PRINSEQ++ – fast FASTQ/FASTA QC filter (Rust port)")]
 #[command(rename_all = "snake_case", disable_help_flag = true, disable_version_flag = true)]
 struct Cli {
     /// Print help (-h)

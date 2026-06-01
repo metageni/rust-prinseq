@@ -235,7 +235,6 @@ impl Stats {
             ("trim_qual_right", self.trim_qual_right),
             ("trim_left",       self.trim_left),
             ("trim_right",      self.trim_right),
-            ("trim_to_len",     self.trim_to_len),
         ];
         if verbose == 2 {
             // one value per line, matching C++ VERBOSE=2

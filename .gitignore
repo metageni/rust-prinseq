@@ -1,0 +1,14 @@
+/target
+Cargo.lock
+
+# test output files
+*.fastq
+*.fasta
+*.fastq.gz
+*.fasta.gz
+!tests/
+
+# editor
+*.swp
+*~
+.DS_Store

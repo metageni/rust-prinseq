@@ -1,0 +1,18 @@
+[package]
+name = "rust-prinseq"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "rust-prinseq"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+flate2 = "1.0"
+bloomfilter = "1.0"
+rand = "0.8"
+rayon = "1.10"
+
+[dev-dependencies]
+tempfile = "3.10"

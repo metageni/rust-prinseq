@@ -17,13 +17,63 @@ Benchmarked against the original C++ on 150 bp reads with a realistic filter set
 **rust-prinseq is consistently ~1.7–1.8× faster** than C++ PRINSEQ++ at all scales, both single and multi-threaded.
 Multi-threading scales similarly in both tools (~1.7–2× gain from 1→4 threads).
 
-## Build
+## Installation
 
-Requires [Rust](https://rustup.rs/) 1.70+.
+### Prerequisites
+
+You need the Rust toolchain (version 1.70 or later). If you don't have it:
 
 ```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env   # or restart your shell
+```
+
+Verify:
+
+```bash
+rustc --version   # should print rustc 1.70.0 or later
+cargo --version
+```
+
+### Option 1 — Install from source (recommended)
+
+```bash
+git clone https://github.com/metageni/rust-prinseq.git
+cd rust-prinseq
+cargo install --path .
+```
+
+This compiles a release binary and places it in `~/.cargo/bin/`, which is already on your `PATH` after the Rust install. You can then call `rust-prinseq` from anywhere.
+
+### Option 2 — Build manually
+
+```bash
+git clone https://github.com/metageni/rust-prinseq.git
+cd rust-prinseq
 cargo build --release
-# binary at target/release/rust-prinseq
+```
+
+The binary is at `target/release/rust-prinseq`. Copy it wherever you like:
+
+```bash
+cp target/release/rust-prinseq /usr/local/bin/   # system-wide
+# or
+cp target/release/rust-prinseq ~/bin/             # user-local
+```
+
+### Verify the installation
+
+```bash
+rust-prinseq --version
+rust-prinseq --help
+```
+
+### Uninstall
+
+If installed via `cargo install`:
+
+```bash
+cargo uninstall rust-prinseq
 ```
 
 ## Usage
